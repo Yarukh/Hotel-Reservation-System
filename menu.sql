@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 05, 2024 at 01:19 PM
+-- Generation Time: May 16, 2024 at 11:18 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -104,13 +104,6 @@ CREATE TABLE `booking` (
   `Upiid` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `booking`
---
-
-INSERT INTO `booking` (`id`, `date`, `time`, `guestTitle`, `guestName`, `gender`, `number`, `address`, `city`, `pincode`, `idProof`, `adharcardNumber`, `pancardNumber`, `drivinglicenseNumber`, `passportNumber`, `nationality`, `email`, `raNumber`, `companyName`, `checkInDate`, `arrivalTime`, `checkOutDate`, `departureTime`, `adults`, `children`, `roomType`, `roomNumber`, `plan`, `guestStatus`, `billingInstruction`, `discount`, `advance`, `roomCharge`, `foodCharge`, `cgstPercentage`, `sgstPercentage`, `discountAmount`, `cgstAmount`, `sgstAmount`, `extraCharge`, `totalAmount`, `paymentMode`, `debitCardNumber`, `debitCardHolder`, `debitCardExpiry`, `debitCardCVV`, `creditCardType`, `creditCardNumber`, `creditCardHolder`, `creditCardExpiry`, `creditCardCVV`, `Upiid`) VALUES
-(1, '2024-04-03', '00:22:00', 'Mr', 'Prasad Lakhpure', 'male', '', 'Pune', 'Pune', '111', 'adharcard', '11111222233', '', '', '', '', '', '0', 'GTL', '2024-04-04', '00:00:00', '2024-04-05', '00:00:00', 2, 0, 'president suite ac', '114', ' ', ' ', 'buildtocompany', 0.00, 200.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL, NULL, 0.00, -200.00, ' ', '', '', '', '', ' ', '', '', '', '', '');
-
 -- --------------------------------------------------------
 
 --
@@ -148,7 +141,8 @@ CREATE TABLE `countrymaster` (
 --
 
 INSERT INTO `countrymaster` (`CountryID`, `CountryCode`, `CountryName`) VALUES
-(1, 'IND', 'INDIA');
+(1, 'IND', 'INDIA'),
+(2, 'RUSS', 'Russia');
 
 -- --------------------------------------------------------
 
@@ -212,7 +206,11 @@ CREATE TABLE `planmaster` (
 --
 
 INSERT INTO `planmaster` (`PlanID`, `PlanCode`, `Plandescription`) VALUES
-(1, 'bbb', 'ccc');
+(1, 'EP', 'European Plan'),
+(2, 'MAP', 'Modified American Plan'),
+(3, 'AP', 'American Plan'),
+(4, 'FB', 'Full Board'),
+(5, 'RO', 'Room Only');
 
 -- --------------------------------------------------------
 
@@ -237,7 +235,7 @@ INSERT INTO `roommaster` (`RoomID`, `RoomCode`, `RoomDescription`) VALUES
 (4, 'DRAC', 'Double Room AC'),
 (5, 'DR', 'Deluxe Room'),
 (6, 'ES', 'Executive Suite'),
-(7, 'PS', 'Presidential Suite');
+(7, 'PR', 'Presidential Suite');
 
 -- --------------------------------------------------------
 
@@ -255,8 +253,8 @@ CREATE TABLE `roomtypemaster` (
 --
 
 INSERT INTO `roomtypemaster` (`RoomCode`, `RoomDescription`) VALUES
-('', ''),
-('aaaaaaaaa', 'cccccccc');
+('PR', 'Presidential Suite'),
+('aaaaaaaaa', '');
 
 --
 -- Indexes for dumped tables
@@ -281,12 +279,6 @@ ALTER TABLE `roommaster`
   ADD PRIMARY KEY (`RoomID`);
 
 --
--- Indexes for table `roomtypemaster`
---
-ALTER TABLE `roomtypemaster`
-  ADD PRIMARY KEY (`RoomCode`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -294,7 +286,7 @@ ALTER TABLE `roomtypemaster`
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
