@@ -117,10 +117,21 @@
         #sample-bill-table th {
             background-color: #4CAF50;
             color: white;
+            text-align: center;
         }
 
-        #sample-bill-table tr:nth-child(even) {
+        #sample-bill-table td {
+            background-color: #f9f9f9;
+        }
+
+        #sample-bill-table tr:nth-child(even) td {
             background-color: #f2f2f2;
+        }
+
+        #sample-bill-table tr:first-child th {
+            text-align: center;
+            font-size: 18px;
+            background-color: #333;
         }
     </style>
 </head>
@@ -166,7 +177,7 @@
                             <td>{$row['roomNumber']}</td>
                             <td>{$row['roomType']}</td>
                             <td>{$row['plan']}</td>
-                          </tr>";
+                        </tr>";
                 }
                 echo "</table>";
             } else {
@@ -189,7 +200,7 @@
                 <span id="todaysoutstanding">Todays Outstanding : </span>
             </div>
             <button onclick="prepare()">Prepare</button>
-            <button onclick="Samplebill()">Sample Bill</button>
+            <button onclick="window.location.href = 'checkbill.php';">Sample Bill</button>
             <button onclick="window.location.href = 'menu.html';">Close</button>
         </div>
     </div>
@@ -217,40 +228,7 @@
             document.getElementById('row' + rowId).classList.add('selected');
         }
 
-        function Samplebill() {
-            if (selectedRowId) {
-                var selectedRow = document.getElementById('row' + selectedRowId);
-                var id = selectedRow.cells[0].innerHTML;
-                var checkInDate = selectedRow.cells[1].innerHTML;
-                var checkOutDate = selectedRow.cells[2].innerHTML;
-                var guestTitle = selectedRow.cells[3].innerHTML;
-                var guestName = selectedRow.cells[4].innerHTML;
-                var roomNumber = selectedRow.cells[5].innerHTML;
-                var roomType = selectedRow.cells[6].innerHTML;
-                var plan = selectedRow.cells[7].innerHTML;
-
-                // Creating a table for the sample bill
-                var sampleBillTable = `
-                    <table>
-                        <tr><th colspan="2">Sample Bill</th></tr>
-                        <tr><td>ID:</td><td>${id}</td></tr>
-                        <tr><td>Check-In Date:</td><td>${checkInDate}</td></tr>
-                        <tr><td>Check-Out Date:</td><td>${checkOutDate}</td></tr>
-                        <tr><td>Guest Title:</td><td>${guestTitle}</td></tr>
-                        <tr><td>Guest Name:</td><td>${guestName}</td></tr>
-                        <tr><td>Room Number:</td><td>${roomNumber}</td></tr>
-                        <tr><td>Room Type:</td><td>${roomType}</td></tr>
-                        <tr><td>Plan:</td><td>${plan}</td></tr>
-                    </table>`;
-
-                // Replace the content of a div with the sample bill table
-                document.getElementById('container').innerHTML = sampleBillTable;
-            } else {
-                alert('Please select a booking to generate a sample bill.');
-            }
-        }
     </script>
-
 
 </body>
 
